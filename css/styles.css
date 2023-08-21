@@ -1,0 +1,9 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  color: #fff;
+  font-size: 1em;
+  font-family: "din-2014-rounded-variable", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding-top: 1em;
+}
