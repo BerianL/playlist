@@ -23,7 +23,7 @@ songs[0][3] // returns "YouTube ID"
 
 2. **Refresh Button:** A "Refresh" button is provided to allow users to generate another set of random songs without having to reload the page.
 
-3. **Embedded YouTube Videos:** Clicking on a song's title opens a modal window containing an embedded YouTube video of the song. The video is played directly within the modal using an iframe.
+3. **Embedded YouTube Videos:** On Desktop clicking on a song opens a modal window containing an embedded YouTube video of the song. The modal can be closed by clicking anywhere outside the modal window. As the embedded YouTube video functionality is limited on mobile devices, the modal window is not displayed on mobile devices, instead a regular hyperlink to the YouTube video is provided.
 
 ## Technologies Used
 

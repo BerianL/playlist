@@ -10,7 +10,20 @@ import songs from './playlist.js';
     const songs = getRandomSongs(arr, 5);
     for (let i = 0; i < songs.length; i++) {
       const videoUrl = `https://www.youtube.com/watch?v=${songs[i][3]}`;
-      items += `<li class="group/item hover:text-neutral"><a href="#" onclick="window.openVideoPopover('${videoUrl}'); return false;">⏵ ${songs[i][0]} by ${songs[i][1]} - ${songs[i][2]}</a></li>`;
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      const linkAttributes = isMobile
+        ? `href="${videoUrl}" target="_blank"`
+        : `href="javascript:void(0)" onclick="openVideoPopover('${videoUrl}'); return false;"`;
+  
+      items += `
+        <li class="group/item hover:text-neutral">
+          <a ${linkAttributes}>
+            <span class="fa-li">
+              <i class="fa-brands fa-youtube"></i>
+            </span>
+            ${songs[i][0]} by ${songs[i][1]} - ${songs[i][2]}
+          </a>
+        </li>`;
     }
     return items;
   }
@@ -41,14 +54,14 @@ import songs from './playlist.js';
   }
   
   document.querySelector('main').innerHTML = `
-    <ol class="text-base">
+    <ul class="fa-ul space-y-2"">
       ${createListItems(songs)}
-    </ol>
+    </ul>
     <button class="btn btn-neutral btn-block mt-8" id="refresh">Refresh</button>
   `;
   
   document.getElementById('refresh').addEventListener('click', () => {
-    const listContainer = document.querySelector('ol');
+    const listContainer = document.querySelector('ul');
     listContainer.innerHTML = createListItems(songs);
   });
   
